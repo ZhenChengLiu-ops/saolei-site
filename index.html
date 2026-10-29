@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- ================== AI 辅助新增 (2026-10-29) ==================
+ * 网页版"简单扫雷"——完全复刻 C 版(Test_2026_10_28 项目)的程序逻辑,
+ * 功能与控制台版一致: 单格翻开、无连锁展开、无插旗、无计时。
+ * 页面骨架对应关系:
+ *   main() 的 do-while 菜单循环      → menu-view / bye-view 两个界面切换
+ *   game.c 里 menu() 的 printf 三行  → menu-view 里的两个按钮
+ *   case 1: game()                   → startGame() (game.js) + game-view
+ *   case 0: printf("Bye Bye!!")      → bye-view 显示 "Bye Bye!!"
+ * =============================================================
+ -->
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>简单扫雷-网站版</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- 对应 menu() 打印的菜单: 1->play / 0->leave -->
+	<div id="menu-view" class="view">
+		<div class="menu-box">
+			<p>------------------</p>
+			<p>-----1-&gt;play------</p>
+			<p>-----0-&gt;leave-----</p>
+			<p>------------------</p>
+			<p>---Please choose--</p>
+			<button id="btn-play">1 -&gt; play</button>
+			<button id="btn-leave">0 -&gt; leave</button>
+		</div>
+	</div>
+
+	<!-- 对应 case 1 进入的 game() 游戏界面 -->
+	<div id="game-view" class="view hidden">
+		<!-- 状态提示区: 对应 search_game 里各处 printf 的提示文字 -->
+		<div id="status">input coordinate</div>
+		<!-- 9x9 棋盘: 对应 print_game 打印的棋盘(JS 动态生成,这里只是容器) -->
+		<div id="board"></div>
+		<!-- 对应菜单循环: 一局结束后可再次 play -->
+		<button id="btn-replay" class="hidden">再来一局(play)</button>
+	</div>
+
+	<!-- 对应 case 0: printf("Bye Bye!!") -->
+	<div id="bye-view" class="view hidden">
+		<div class="menu-box">
+			<p>Bye Bye!!</p>
+		</div>
+	</div>
+
+	<script src="game.js"></script>
+</body>
+</html>

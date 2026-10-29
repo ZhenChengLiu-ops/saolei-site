@@ -1,0 +1,127 @@
+/* ================== AI 辅助新增 (2026-10-29) ==================
+ * 网页版"简单扫雷"的样式——对应 C 版 print_game() 打印棋盘的视觉效果。
+ * 风格: 经典扫雷(仿 Windows 老扫雷的灰色浮雕格子)。
+ * =============================================================
+ */
+
+/* 页面整体: 深灰底 + 内容居中,给"很简单的游戏"一个干净的舞台 */
+body {
+	font-family: "Consolas", "Courier New", monospace;
+	background-color: #2b2e33;
+	color: #222;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 40px;
+}
+
+h1 {
+	color: #eee;
+	font-weight: normal;
+}
+
+/* ============ 页面切换(menu-view / game-view / bye-view) ============ */
+.view.hidden {
+	display: none; /* JS 里控制显示哪个界面,对应 C 版 do-while 菜单循环的状态切换 */
+}
+
+/* ============ 菜单界面(对应 menu() 的 printf 外观) ============ */
+.menu-box {
+	background-color: #d4d0c8;
+	border: 3px solid; /* 经典 Win95 风格浮雕边框: 上左亮、下右暗 */
+	border-color: #ffffff #808080 #808080 #ffffff;
+	padding: 20px 40px;
+	text-align: center;
+}
+
+.menu-box p {
+	margin: 6px 0;
+}
+
+.menu-box button {
+	display: block;
+	width: 100%;
+	margin: 8px 0 0;
+	padding: 6px 14px;
+	font-family: inherit;
+	background-color: #f4f2ed;
+	border: 2px solid;
+	border-color: #ffffff #808080 #808080 #ffffff;
+	cursor: pointer;
+}
+
+.menu-box button:active {
+	border-color: #808080 #ffffff #ffffff #808080; /* 按下变凹,模拟按压手感 */
+}
+
+/* ============ 游戏界面 ============ */
+#status {
+	color: #eee;
+	margin: 10px 0 16px;
+	min-height: 24px;
+}
+
+/* 棋盘容器: CSS Grid 排出 9x9(由 game.js 动态设置实际列数) */
+#board {
+	display: grid;
+	gap: 0;
+	background-color: #808080;
+	border: 3px solid;
+	border-color: #ffffff #808080 #808080 #ffffff;
+	padding: 3px;
+}
+
+/* 单个格子: 未翻开 '*' 用凸边框,已翻开用平灰底(经典扫雷惯例) */
+.cell {
+	width: 38px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	font-weight: bold;
+	user-select: none;
+	background-color: #d4d0c8;
+	border: 2px solid;
+	border-color: #ffffff #808080 #808080 #ffffff;
+	cursor: pointer;
+}
+
+/* 已翻开的格子: 变平,表示"挖开过" */
+.cell.opened {
+	border: 1px solid #b0aca4;
+	background-color: #c0beba;
+}
+
+/* 数字 1~8 的颜色(经典扫雷配色): game.js 按数字加 n1~n8 类 */
+.cell.n1 { color: #0000ff; } /* 1 蓝 */
+.cell.n2 { color: #008000; } /* 2 绿 */
+.cell.n3 { color: #ff0000; } /* 3 红 */
+.cell.n4 { color: #000080; } /* 4 深蓝 */
+.cell.n5 { color: #800000; } /* 5 栗色 */
+.cell.n6 { color: #008080; } /* 6 青色 */
+.cell.n7 { color: #000000; } /* 7 黑色 */
+.cell.n8 { color: #808080; } /* 8 灰色 */
+
+/* 踩雷的格子(对应失败时 print_game(ingame) 里的 '1' 格子) */
+.cell.boom {
+	background-color: #ff5555;
+	color: #7a0000;
+}
+
+/* 展示完整雷区时的普通雷格(没踩中的那些 '1' 格子) */
+.cell.mine {
+	background-color: #c0beba;
+	color: #7a0000;
+}
+
+/* "再来一局(play)"按钮 */
+#btn-replay {
+	margin-top: 16px;
+	padding: 8px 20px;
+	font-family: inherit;
+	background-color: #f4f2ed;
+	border: 2px solid;
+	border-color: #ffffff #808080 #808080 #ffffff;
+	cursor: pointer;
+}
