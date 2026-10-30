@@ -18,6 +18,10 @@
 </head>
 <body>
 
+	<!-- AI辅助新增(文字修饰): <h1> 下的副标题,标明这是简单程序+其来源 -->
+	<h1>简单扫雷-网站版</h1>
+	<p class="subtitle">一个简单的（<b>功能并不完整</b>）扫雷程序——网站版，逐行复刻控制台 C 语言游戏逻辑</p>
+
 	<!-- 对应 menu() 打印的菜单: 1->play / 0->leave -->
 	<div id="menu-view" class="view">
 		<div class="menu-box">
@@ -28,6 +32,15 @@
 			<p>---Please choose--</p>
 			<button id="btn-play">1 -&gt; play</button>
 			<button id="btn-leave">0 -&gt; leave</button>
+		</div>
+
+		<!-- AI辅助新增(文字修饰): 功能说明卡,标明已实现/未实现内容,
+		     与 C 版文件顶部"AI修改说明"注释块的定位一致 -->
+		<div class="info-box">
+			<p class="info-title">关于本程序</p>
+			<p>这是一个<b>简单的、功能并不完整的</b>扫雷程序（网站版）。</p>
+			<p>已实现：菜单、随机埋雷、数雷、单格翻开、胜负判定（完全对应 C 版）。</p>
+			<p>未实现：0 格连锁展开（翻开）、右键插旗、剩余雷数/计时显示、难度选择。</p>
 		</div>
 	</div>
 
@@ -47,6 +60,9 @@
 			<p>Bye Bye!!</p>
 		</div>
 	</div>
+
+	<!-- AI辅助新增(文字修饰): 页面底部常驻小字 -->
+	<footer class="page-footer">简单扫雷 · 仅学习用途 · 功能未完整</footer>
 
 	<script src="game.js"></script>
 </body>

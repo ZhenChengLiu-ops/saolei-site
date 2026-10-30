@@ -20,6 +20,43 @@ h1 {
 	font-weight: normal;
 }
 
+/* ============ AI 辅助新增 (2026-10-29): 文字修饰三件套 ============ */
+/* 副标题: 跟在 <h1> 后,低调声明程序定位 */
+.subtitle {
+	color: #a8a8a8;
+	font-size: 14px;
+	margin: -8px 0 24px;
+}
+
+/* 功能说明卡(menu 页内): 与 menu-box 同宗的浅灰面板,文字左对齐便于阅读 */
+.info-box {
+	margin-top: 16px;
+	background-color: #d4d0c8;
+	border: 2px solid; /* 反向浮雕边框: 凹进去的观感 */
+	border-color: #808080 #ffffff #ffffff #808080;
+	max-width: 360px;
+	padding: 12px 18px;
+	font-size: 13px;
+	color: #444444;
+	text-align: left;
+}
+
+.info-box p {
+	margin: 4px 0;
+}
+
+.info-box .info-title {
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+/* 页面底部常驻小字 */
+.page-footer {
+	color: #8a8a8a;
+	font-size: 12px;
+	margin-top: 32px;
+}
+
 /* ============ 页面切换(menu-view / game-view / bye-view) ============ */
 .view.hidden {
 	display: none; /* JS 里控制显示哪个界面,对应 C 版 do-while 菜单循环的状态切换 */
